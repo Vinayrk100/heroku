@@ -1,0 +1,25 @@
+html>
+   <body>
+      <form action = "http://localhost:5000/welcome" method = "post">
+         <p>you may also like {{booktitle}}:</p>
+                 {% for b in book_details %}
+<!--              <p><input type = "submit" name = "title"  value="{{ g[9] }}"/></p>-->
+              <li>Title:</li>
+              <li>{{ b[3] }}</li>
+               <img src="{{b[6]}}"/>
+              <li>Author:</li>
+          <li>{{ b[2] }}</li>
+              <li>Genre:</li>
+          <li>{{ b[5] }}</li>
+               <li>Price:</li>
+          <li>{{ b[10] }}</li>
+              <li>Rating:</li>
+              <li>{{ b[7] }}</li>
+
+
+            {% endfor %}
+
+          <p><input type = "submit" name="sub" value = "Exit" /></p>
+      </form>
+   </body>
+</html>

@@ -1,0 +1,94 @@
+<html>
+<style>
+ul#menu li {
+  display:inline;
+}
+
+img{
+    width:100px;
+    height:100px
+}
+</style>
+   <body>
+      <form action = "http://localhost:5000/recommendation" method = "post">
+<!--       <form action = "http://localhost:5000/recommendation?uid={{uid}}" method = "post">-->
+         <h3> Welcome{{uid}}, you are a {{segment}} customer , you are eligible for : {{ promo[0] }}<h3>
+<!--   <p><input type = "submit" name = "prom" value="{{promo[0]}}"/></p>&ndash;&gt;-->
+        <input type="hidden" name="uid" value={{uid}} />
+          <h3>Recommendation based on Genres<h3>-->
+            {% for g in recommendations_genre %}
+              <p><input type = "submit" name = "title"  value="{{ g[9] }}"/></p>
+              <ul id="menu">
+              <li>Title:</li>
+              <li>{{ g[9] }}</li>
+               <img src="{{g[12]}}"/>
+              <li>Author:</li>
+          <li>{{ g[4] }}</li>
+              <li>Genre:</li>
+          <li>{{ g[11] }}</li>
+               <li>Price:</li>
+          <li>{{ g[15] }}</li>
+              <li>Rating:</li>
+              <li>{{ g[3] }}</li>
+              </ul>
+
+            {% endfor %}
+
+              <h3>Recommendation based on authors<h3>-->
+            {% for a in recommendations_author %}
+                  <p><input type = "submit" name = "title" value="{{ a[9] }}"/></p>
+                  <ul id="menu">
+          <li>Title:</li>
+              <li>{{ a[9] }}</li>
+               <img src="{{a[12]}}"/>
+              <li>Author:</li>
+          <li>{{ a[4] }}</li>
+              <li>Genre:</li>
+          <li>{{ a[11] }}</li>
+               <li>Price:</li>
+          <li>{{ a[15] }}</li>
+              <li>Rating:</li>
+              <li>{{ a[3] }}</li>
+                  </ul>
+            {% endfor %}
+
+                  <h3>Recommendation based on pages<h3>-->
+            {% for bp in recommendations_bookpages %}
+                      <p><input type = "submit" name = "title" value="{{ bp[9] }}"/></p>
+                      <ul id="menu">
+        <li>Title:</li>
+              <li>{{ bp[9] }}</li>
+               <img src="{{bp[12]}}"/>
+              <li>Author:</li>
+          <li>{{ bp[4] }}</li>
+              <li>Genre:</li>
+          <li>{{ bp[11] }}</li>
+               <li>Price:</li>
+          <li>{{ bp[15] }}</li>
+              <li>Rating:</li>
+              <li>{{ bp[3] }}</li>
+                      </ul>
+            {% endfor %}
+
+           <h3>Already Purchased books<h3>-->
+            {% for ap in purchased_books %}
+               <p><input type = "submit" name = "title" value="{{ ap[11] }}"/></p>
+               <ul id="menu">
+                <li>Title</li>
+          <li>{{ ap[11] }}</li>
+                <img src="{{ap[14]}}"/>
+                <li>Author</li>
+          <li>{{ ap[6] }}</li>
+                <li>Genre</li>
+          <li>{{ ap[13] }}</li>
+                <li>Price</li>
+          <li>{{ ap[8] }}</li>
+                <li>Rating</li>
+          <li>{{ ap[17] }}</li>
+               </ul>
+            {% endfor %}
+
+         <p><input type = "submit" value = "Submit" /></p>
+      </form>
+   </body>
+</html>

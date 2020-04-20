@@ -1,0 +1,42 @@
+<html>
+<style>
+    img{
+        width:150px;
+        height:150px;
+     }
+</style>
+   <body>
+      <form action = "http://localhost:5000/purchase" method = "post">
+          {% for u in user %}
+         <p>Books Suggestions for User ID : {{u[1]}}</p>
+<!--           <li>{{ uid }}</li>-->
+           <input type="hidden" name="uname" value={{u[1]}} />
+
+          <input type="hidden" name="uid" value={{ u[0] }} />
+
+           {% endfor %}
+<!--          <input type="hidden" name="userdet" value={{ user }} />-->
+<!--           <input type="hidden" name="bookdet" value={{ book_details }} />-->
+  {% for b in book_details %}
+           <li>Book</li>
+          <li>{{ b[3] }}</li>
+          <input type="hidden" name="booktitle" value={{ b[3] }} />
+          <input type="hidden" name="price" value={{ b[10] }} />
+           <img src="{{b[6]}}"/>
+           <li>Author</li>
+          <li>{{ b[2] }}</li>
+          <li>Genre</li>
+          <li>{{ b[5] }}</li>
+           <li>Rating count</li>
+          <li>{{ b[8] }}</li>
+           <li>Rating</li>
+          <li>{{ b[10] }}</li>
+
+  {% endfor %}
+          <p><input type = "text" name = "email" required="true" /></p>
+          <p><input type = "submit" name="sub" value = "Purchase" /></p>
+          <p><input type = "submit" name="sub" value = "Back" /></p>
+      </form>
+   </body>
+</html>
+
